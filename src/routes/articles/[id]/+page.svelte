@@ -2,12 +2,11 @@
     const { data } = $props();
 </script>
 
-<h1>InstaBlog</h1>
-
 <div>
 	{#each data.articles as article (article.id)}
 		<div transition:slide>
-            <a href={`articles/${article.id}`}><img src={article.image} alt="file"></a>
+            <img src={article.image} alt="file">
+            <p>Description: {article.description} - Author: {article.author}</p>
 			<p>Votes: {article.votes}</p>
 		</div>
 	{/each}
