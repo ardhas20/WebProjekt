@@ -1,0 +1,12 @@
+import { createConnection } from '$lib/db/mysql';
+import { redirect } from '@sveltejs/kit';
+
+export async function load() {
+
+    let connection = await createConnection();
+    let [rows] = await connection.execute('SELECT * FROM articles ORDER BY votes DESC');
+
+    return {
+        articles: rows
+    };
+}
