@@ -14,6 +14,33 @@
                 </button>
             </form>
 			<p>Votes: {article.votes}</p>
+            <div>
+				<h4>Comments</h4>
+
+				<div>
+					{#each data.comments as comment}
+						<p>
+							<span>{comment.name}: </span>
+							{comment.text}
+						</p>
+					{/each}
+				</div>
+				<form action="?/comm" method="POST" use:enhance>
+					<input type="hidden" name="id" value={article.id} />
+
+					<div>
+						<label for="name">Name</label>
+						<input type="text" name="name" required/>
+					</div>
+
+					<div>
+						<label for="comm">Comment</label>
+						<textarea name="comm" required></textarea>
+					</div>
+
+					<button type="submit" >Add Comment</button>
+				</form>
+			</div>
 		</div>
 	{/each}
 </div>
