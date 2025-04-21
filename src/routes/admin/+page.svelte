@@ -7,6 +7,10 @@
 
 <h1>Admin dashboard</h1>
 
+<form action="/logout?/logout" method="POST">
+    <button type="submit">Logout</button>
+</form>
+
 <a href="/admin/new">Create a new article</a>
 
 <div>
