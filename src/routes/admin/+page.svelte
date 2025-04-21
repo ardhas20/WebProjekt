@@ -8,10 +8,11 @@
 
 <h1>Admin dashboard</h1>
 
+<a href="/admin/new">Create a new article</a>
 
-<div class="container">
+<div>
 	{#each data.articles as article (article.id)}
-		<div class="box" transition:slide>
+		<div transition:slide>
 			<p>ID: {article.id} - Description: {article.description} - Author: {article.author} - Votes: {article.votes}</p>
 			<form action="?/deleteArticle" method="POST" use:enhance>
 				<input type="hidden" name="id" value={article.id} />
