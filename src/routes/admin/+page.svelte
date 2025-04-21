@@ -1,6 +1,5 @@
 <script>
 	import { enhance } from '$app/forms';
-	import Warning from '$lib/components/Warning1.svelte';
 	import { slide } from 'svelte/transition';
 	const { data } = $props();
 </script>

@@ -5,6 +5,11 @@ import { put } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
  
 export async function load() {
+    if (!locals.user || locals.user.role !== 'admin') {
+		redirect(302, '/login');
+	}
+
+
     let connection = await createConnection();
     let [rows] = await connection.execute('SELECT * FROM articles');
 
@@ -18,6 +23,7 @@ export const actions = {
         const formData = await request.formData();
         const file = formData.get('file');
         const { url } = await put('ProjectImages/' + file.name, file, {
+            addRandomSuffix: true,
 			access: 'public',
 			token: BLOB_READ_WRITE_TOKEN
 		});
